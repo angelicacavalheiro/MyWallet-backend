@@ -1,5 +1,6 @@
 import connection from "../database/database.js";
 import bcrypt from 'bcrypt'
+import { signinSchema } from '../validation/schemas.js'
 
 async function enter (req, res) {
 
@@ -7,6 +8,16 @@ async function enter (req, res) {
         email,
         senha
     } = req.body
+
+    const errors = signinSchema.validate(
+        {
+            email,
+            senha
+        }).error;
+
+        if(errors){
+            console.log(errors)
+        }
 
     try {
 

@@ -11,6 +11,5 @@ const connection = new Pool({
     database: 'mywallet'
 });
 
-
 export default connection;
 
