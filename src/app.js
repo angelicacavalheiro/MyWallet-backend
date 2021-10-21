@@ -14,6 +14,10 @@ app.post('/sign-in', enter)
 app.post('/movimento', activityPost)
 app.get('/movimento', activityList)
 
+
+
+
+
 app.listen(4000, () => {
     console.log('Server listening on port 4000.');
 });

@@ -1,6 +1,7 @@
 import connection from "../database/database.js";
 import bcrypt from 'bcrypt'
 import { signinSchema } from '../validation/schemas.js'
+import { v4 as uuid } from 'uuid'
 
 async function enter (req, res) {
 
@@ -25,13 +26,23 @@ async function enter (req, res) {
             SELECT * FROM clientes WHERE email = $1;
         `, [email]);
 
+    const user = result.rows[0]
+
         const hash = bcrypt.compareSync(senha, result.rows[0].senha);
         if(!hash){
             return res.sendStatus(401);
         }
 
-        //amanha vamos mudar esse trecho
-        res.sendStatus(200)
+        const token = uuid()
+
+        await connection.query(`
+          INSERT INTO sessions (user_id, token)
+          VALUES ($1, $2)
+        `, [user.id, token]);
+
+        res.status(200).send({
+            token
+        })
 
     } catch (error) {
         console.log(error)
