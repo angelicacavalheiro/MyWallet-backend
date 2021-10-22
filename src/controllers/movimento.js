@@ -3,11 +3,16 @@ import { activitySchema } from '../validation/schemas.js'
 
 async function activityPost (req, res) {
 
+    const option = {
+        month: 'numeric',
+        day: 'numeric'
+    }
+    const data = new Date().toLocaleDateString( 'pt-br', option)
+
     const {
         valor,
         entrada,
         saida,
-        data,
         descricao
     } = req.body
 
@@ -16,7 +21,6 @@ async function activityPost (req, res) {
             valor,
             entrada,
             saida,
-            data,
             descricao
         }).error;
 
@@ -55,7 +59,6 @@ async function activityPost (req, res) {
     } else {
         res.sendStatus(401);
     }
-
 }
 
 async function activityList (req, res) {
@@ -78,11 +81,6 @@ async function activityList (req, res) {
         
         try {
             const result = await connection.query(`SELECT * FROM movimento WHERE user_id = $1;`, [user.id]);
-    
-            // result.rows = result.rows.map(value => ({
-            //     ...value,
-            //     data: new Date(value.data).toLocaleDateString('pt-Br')
-            //   }))
 
             const resultFormated = result.rows.map(r => (
                 {
@@ -103,8 +101,7 @@ async function activityList (req, res) {
 
     } else {
         res.sendStatus(401);
-    }
-      
+    }      
 }
 
 export{

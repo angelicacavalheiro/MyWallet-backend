@@ -26,7 +26,7 @@ async function enter (req, res) {
             SELECT * FROM clientes WHERE email = $1;
         `, [email]);
 
-    const user = result.rows[0]
+        const user = result.rows[0]
 
         const hash = bcrypt.compareSync(senha, result.rows[0].senha);
         if(!hash){

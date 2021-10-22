@@ -1,5 +1,4 @@
 import Joi from 'joi';
-import JoiDate from "@joi/date"
 
 const signupSchema = Joi.object({
     nome: Joi.string().min(1).max(30).required(),
@@ -14,13 +13,10 @@ const signinSchema = Joi.object({
     senha: Joi.string().alphanum().min(1).max(30).required()
 });
 
-const extendedJoi = Joi.extend(JoiDate)
-
 const activitySchema = Joi.object({
     valor: Joi.number().min(1).required(),
     entrada: Joi.boolean().required(),
     saida: Joi.boolean().required(),
-    data: extendedJoi.date().format('DD/MM/YYYY'),
     descricao: Joi.string().min(1).required()
 });
 
