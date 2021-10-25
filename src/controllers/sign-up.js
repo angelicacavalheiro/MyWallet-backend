@@ -2,7 +2,6 @@ import connection from "../database/database.js";
 import bcrypt from 'bcrypt'
 import { signupSchema } from '../validation/schemas.js'
 
-
 async function userRegistration (req, res) {
 
     const {
@@ -33,7 +32,7 @@ async function userRegistration (req, res) {
         await connection.query(`
         INSERT INTO clientes (nome, email, senha, confirma_senha) VALUES ($1, $2, $3, $4);
         `, [nome, email, hashOne, hashTwo]);
-        return res.status(200).send({message : "Você esta cadastrado"})
+        return res.status(201).send({message : "Você esta cadastrado"})
 
     } catch (error) {
         console.log(error)

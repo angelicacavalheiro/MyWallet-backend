@@ -6,7 +6,6 @@ beforeEach(async () => {
     await connection.query(`DELETE FROM clientes WHERE nome = 'Angelica';`);
 });
 
-
 afterAll(() => {
     connection.end();
 });
@@ -26,7 +25,7 @@ describe('POST /sign-up', () => {
         expect(status).toEqual(400);
     })
 
-    it('returns 200 for valid params', async() => {
+    it('returns 201 for valid params', async() => {
         let body = {
             nome: "angelica",
             email: "angel@angel.com",
@@ -36,7 +35,7 @@ describe('POST /sign-up', () => {
         const result = await supertest(app).post('/sign-up').send(body)
         const status = result.status
 
-        expect(status).toEqual(200);
+        expect(status).toEqual(201);
     })
 
     it('returns message for valid params', async() => {
