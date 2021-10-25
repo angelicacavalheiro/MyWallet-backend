@@ -80,7 +80,7 @@ async function activityList (req, res) {
     if(user) {
         
         try {
-            const result = await connection.query(`SELECT * FROM movimento WHERE user_id = $1;`, [user.id]);
+            const result = await connection.query(`SELECT * FROM movimento WHERE user_id = $1 ORDER BY data DESC;`, [user.id]);
 
             const resultFormated = result.rows.map(r => (
                 {
