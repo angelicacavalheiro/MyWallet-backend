@@ -2,6 +2,7 @@ import connection from "../database/database.js";
 import bcrypt from 'bcrypt'
 import { signupSchema } from '../validation/schemas.js'
 
+
 async function userRegistration (req, res) {
 
     const {
@@ -21,6 +22,7 @@ async function userRegistration (req, res) {
 
         if(errors){
             console.log(errors)
+            return  res.sendStatus(400)
         }
 
     try {
@@ -31,8 +33,8 @@ async function userRegistration (req, res) {
         await connection.query(`
         INSERT INTO clientes (nome, email, senha, confirma_senha) VALUES ($1, $2, $3, $4);
         `, [nome, email, hashOne, hashTwo]);
+        return res.sendStatus(200)
 
-        res.sendStatus(200)
     } catch (error) {
         console.log(error)
         res.sendStatus(500)

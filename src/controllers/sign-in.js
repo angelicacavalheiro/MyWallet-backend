@@ -50,8 +50,42 @@ async function enter (req, res) {
     }
 }
 
+async function userName (req, res) {
+
+    const authorization = req.headers['authorization'];
+    const token = authorization?.replace('Bearer ', '');
+
+    if(!token) return res.sendStatus(401);
+
+    const result = await connection.query(`
+        SELECT * FROM sessions
+        JOIN clientes
+        ON sessions.user_id = clientes.id
+        WHERE sessions.token = $1
+  `, [token]);
+
+    const user = result.rows[0];
+
+    if(user) {
+
+    try {
+        const result = await connection.query(`
+        SELECT nome FROM clientes WHERE id = $1;`, [user.id]);
+        res.send(result.rows[0].nome)
+
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500)
+    }   
+
+    } else {
+        res.sendStatus(401);
+    }
+}
+
 export{
-    enter
+    enter,
+    userName
 }
 
 

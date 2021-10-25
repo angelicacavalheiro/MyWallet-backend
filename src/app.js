@@ -1,8 +1,9 @@
 import express from 'express';
 import cors from 'cors';
+import connection from './database/database.js';
 
 import { userRegistration } from './controllers/sign-up.js';
-import { enter } from './controllers/sign-in.js';
+import { enter, userName } from './controllers/sign-in.js';
 import { activityPost, activityList } from './controllers/movimento.js';
 
 const app = express();
@@ -11,11 +12,9 @@ app.use(express.json());
 
 app.post('/sign-up', userRegistration)
 app.post('/sign-in', enter)
+app.get('/sign-in', userName)
 app.post('/movimento', activityPost)
 app.get('/movimento', activityList)
 
-app.listen(4000, () => {
-    console.log('Server listening on port 4000.');
-});
-    
+export default app;
     

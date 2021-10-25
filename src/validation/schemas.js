@@ -14,7 +14,7 @@ const signinSchema = Joi.object({
 });
 
 const activitySchema = Joi.object({
-    valor: Joi.number().min(1).required(),
+    valor: Joi.number().required(),
     entrada: Joi.boolean().required(),
     saida: Joi.boolean().required(),
     descricao: Joi.string().min(1).required()

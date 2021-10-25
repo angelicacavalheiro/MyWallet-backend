@@ -87,12 +87,12 @@ async function activityList (req, res) {
                  valor: r.valor,
                  entrada: r.entrada,
                  saida: r.saida,
-                 data: new Date(r.data).toLocaleDateString('pt-Br'),
+                 data: r.data,
                  descricao: r.descricao
                 }
             ))
     
-            return res.send(resultFormated);
+            return res.status(200).send(resultFormated);
               
         } catch (error) {
             console.log(error)
