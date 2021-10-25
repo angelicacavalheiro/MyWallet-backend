@@ -47,10 +47,8 @@ describe('POST /sign-up', () => {
             confirma_senha: "12345"
         }
         const result = await supertest(app).post('/sign-up').send(body)
-        const status = result.status
         const send = result.body.message
 
-        expect(status).toEqual(200);
         expect(send).toEqual("Você esta cadastrado");
     })
 
