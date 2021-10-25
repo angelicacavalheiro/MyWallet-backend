@@ -33,7 +33,7 @@ async function userRegistration (req, res) {
         await connection.query(`
         INSERT INTO clientes (nome, email, senha, confirma_senha) VALUES ($1, $2, $3, $4);
         `, [nome, email, hashOne, hashTwo]);
-        return res.sendStatus(200)
+        return res.status(200).send({message : "Você esta cadastrado"})
 
     } catch (error) {
         console.log(error)

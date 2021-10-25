@@ -6,6 +6,7 @@ beforeEach(async () => {
     await connection.query(`DELETE FROM clientes WHERE nome = 'Angelica';`);
 });
 
+
 afterAll(() => {
     connection.end();
 });
@@ -36,6 +37,21 @@ describe('POST /sign-up', () => {
         const status = result.status
 
         expect(status).toEqual(200);
+    })
+
+    it('returns message for valid params', async() => {
+        let body = {
+            nome: "angelica",
+            email: "angel@angel.com",
+            senha: "12345",
+            confirma_senha: "12345"
+        }
+        const result = await supertest(app).post('/sign-up').send(body)
+        const status = result.status
+        const send = result.body.message
+
+        expect(status).toEqual(200);
+        expect(send).toEqual("Você esta cadastrado");
     })
 
 })
