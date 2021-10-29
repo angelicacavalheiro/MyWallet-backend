@@ -7,7 +7,7 @@ async function activityPost (req, res) {
         month: 'numeric',
         day: 'numeric'
     }
-    const data = new Date().toLocaleDateString( 'pt-br', option)
+    const data = new Date().toLocaleDateString('pt-br', option)
 
     const {
         valor,
