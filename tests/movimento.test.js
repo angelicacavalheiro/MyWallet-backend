@@ -6,7 +6,7 @@ import { movimentFactory } from '../src/factories/moviment.factory.js';
 
 //pra testar se o retorno de movimento esta correto, preciso antes de cada teste
 //inserir um usuario com token em sessions 
-//e um onjeto valido em movimento
+//e um objeto valido em movimento
 beforeEach(async () => {
 
     await sessionsFactory();
