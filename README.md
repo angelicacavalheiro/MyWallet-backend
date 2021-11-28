@@ -33,7 +33,7 @@ This project is divided into two parts:
 ## Functionalities
 - SignIn and signUp with password and email validations;
 
-- Insert and list: fiancial events;
+- Insert and list: financial events;
 
 ## Installing
 
