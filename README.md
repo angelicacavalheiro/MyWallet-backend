@@ -50,6 +50,11 @@ $ cd MyWallet-backend
 $ npm install
 ```
 
+**Run the application in production mode**
+
+```
+$ ntl -> start
+```
 **Run the application in development mode**
 
 Create a .env.dev file and fill it using your environment variables following the .env.example
@@ -59,6 +64,10 @@ $ ntl -> start:dev
 ```
 
 You can find the .env.example [here](https://github.com/angelicacavalheiro/MyWallet-backend/blob/main/.env.example).
+
+In this case you need to adapt the routes that access the backend, on the front. because the current routes, access the production environment.
+
+##
 
 ## Built With
 **Server**  ([NodeJS](https://nodejs.org/en/))
