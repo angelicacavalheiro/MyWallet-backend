@@ -59,11 +59,11 @@ $ ntl -> start
 
 Create a .env.dev file and fill it using your environment variables following the .env.example
 
+You can find the .env.example [here](https://github.com/angelicacavalheiro/MyWallet-backend/blob/main/.env.example).
+
 ```
 $ ntl -> start:dev
 ```
-
-You can find the .env.example [here](https://github.com/angelicacavalheiro/MyWallet-backend/blob/main/.env.example).
 
 In this case you need to adapt the routes that access the backend, on the front. because the current routes, access the production environment.
 
