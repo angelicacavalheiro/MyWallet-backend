@@ -7,7 +7,7 @@ This project is part of my personal portfolio. In it I train the skills necessar
 I developed all phases of the back-end, front-end, database implementation and some automated tests.
 Besides, it's an app that makes it very easy to manage accounts as well as know the balance.
 
-We'll be happy if you can provide some feedback on the design, code, structure, or anything else you can report that might make us a better developer!
+I will be happy if you can provide some feedback on the design, code, structure, or anything else you can report that might make us a better developer!
 Email me: angelicacavalheiro51@gmail.com
 
 
