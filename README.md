@@ -40,8 +40,8 @@ This project is divided into two parts:
 **Cloning the Repository**
 
 ```
-$ git clone https://github.com/angelicacavalheiro/Mira
-$ cd Mira
+$ git clone https://github.com/angelicacavalheiro/MyWallet-backend
+$ cd MyWallet-backend
 ```
 
 **Installing dependencies**
