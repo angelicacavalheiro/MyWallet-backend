@@ -9,7 +9,6 @@ beforeEach(async () => {
     await movimentFactory();
 });
 
-//depois de cada teste apago tudo de sessões
 afterAll( async () => {
     await connection.query(`DELETE FROM sessions;`);
     await connection.query(`DELETE FROM movimento WHERE user_id = 1;`);
@@ -26,8 +25,6 @@ describe('GET /movimento', () => {
         const result = await supertest(app)
             .get('/movimento')
             .set('Authorization', 'eb9f84ee-b54b-43f2-bca2-d3667d5820a7')
-
-            console.log(result.body)
 
         expect(result.status).toEqual(200);
         expect(result.body[0]).toHaveProperty('valor')
