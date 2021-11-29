@@ -65,7 +65,7 @@ You can find the .env.example [here](https://github.com/angelicacavalheiro/MyWal
 $ ntl -> start:dev
 ```
 
-In this case you need to adapt the routes that access the backend, on the front. because the current routes, access the production environment.
+In this case you need to adapt the URL that accesses the backend, in the frontend scripts.
 
 ##
 
