@@ -2,14 +2,14 @@ import Joi from 'joi';
 
 const signupSchema = Joi.object({
     nome: Joi.string().min(1).max(30).required(),
-    email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] }}).required(),
+    email: Joi.string().email({ tlds: { allow: false } }),
     senha: Joi.string().alphanum().min(1).max(30).required(),
     confirma_senha: Joi.ref('senha')
 });
 
 
 const signinSchema = Joi.object({
-    email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] }}).required(),
+    email: Joi.string().email({ tlds: { allow: false } }),
     senha: Joi.string().alphanum().min(1).max(30).required()
 });
 
